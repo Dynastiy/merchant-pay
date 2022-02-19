@@ -4,11 +4,11 @@
       <!-- Left Column / Headphones Image -->
       <div class="left-column">
         <div class="product-description">
-          <h1 class="text-capitalize">{{ submitted.name }}</h1>
-          <p>
+          <h1 class="text-capitalize fon-weight-bold">{{ submitted.name }}</h1>
+          <p class="text-dark font-weight-bold">
             {{ submitted.email }}
           </p>
-          <p>
+          <p class="text-dark">
             {{ submitted.reference_number }}
           </p>
           <!-- <div>
@@ -49,13 +49,13 @@
             <a
               class="cart-btn btn-success"
               @click="approve(submitted)"
-              v-show="submitted.is_verified === 'Pending'"
+              v-show="submitted.is_verified != 'True'"
               >Verify</a
             >
             <a
               class="cart-btn btn-danger"
               @click="decline(submitted)"
-              v-show="submitted.is_verified === 'Pending'"
+              v-show="submitted.is_verified != 'False'"
               >Decline</a
             >
           </div>
@@ -75,9 +75,11 @@
                 :key="doc.id"
                 style="grid-gap: 10px"
               >
-                <div class="shadow-sm p-3">
-                  <img width="60%" :src="baseurl + doc.file" alt="" />
-                  <h6>{{ doc.name }}</h6>
+                <div class="shadow-sm bg-white p-3">
+                  <a :href="baseurl + doc.file" download target="_black">
+                    <img width="60%" :src="baseurl + doc.file" alt="" />
+                    <h6 class="text-dark pt-3">{{ doc.name }}</h6>
+                  </a>
                 </div>
               </div>
             </div>

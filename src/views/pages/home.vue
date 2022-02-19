@@ -19,18 +19,13 @@
               <tbody>
                 <tr v-for="item in kyc" :key="item.id">
                   <td class="text-uppercase">
-                    <!-- <div class="d-flex align-items-center">
-                      <div class="name_wrap">
-                        <img src="@/assets/male_avatar.png" />
-                      </div> -->
                       {{ item.reference_number }}
-                    <!-- </div> -->
                   </td>
                   <td class="text-capitalize"> {{ item.name }} </td>
                   <td > {{ item.email }} </td>
-                  <td> {{ item.is_verified }} </td>
+                  <td class="d-flex align-items-center"> <div :class="[item.is_verified]"></div> <span>{{ item.is_verified }}</span> </td>
                   <td>
-                      <router-link :to=" '/kyc/'+item.reference_number " class="cart-btn btn-success">View More</router-link>
+                      <router-link :to=" '/kyc/'+item.reference_number " class="view-btn">View More</router-link>
                   </td>
                 </tr>
               </tbody>

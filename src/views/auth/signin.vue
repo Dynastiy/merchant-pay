@@ -53,9 +53,9 @@
               </div>
             </div>
            </div>
-           <div class="text-right pb-1">
+           <!-- <div class="text-right pb-1">
             <span class=""> <router-link to="/forgot-password" class="text-info font-weight-bold">Forgot Password?</router-link> </span>
-          </div> 
+          </div>  -->
             <div class="container-login100-form-btn">
               <button class="login100-form-btn">LOGIN</button>
             </div>

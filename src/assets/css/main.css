@@ -2,12 +2,15 @@
     padding: 0;
     margin: 0;
 }
+body{
+  background-color: var(--accent-color);
+}
 :root {
-    --primary-color: #a67b3e;
-    --secondary-color: #a3783d;
-    --tertiary-color: #d2b681;
-    --accent-color: #fae4ba25;
-    --light-color: #d2b68175;
+    --primary-color: #020818;
+    --secondary-color: #305FF3;
+    --tertiary-color: #B8D2FF;
+    --accent-color: #B8D2FF25;
+    --light-color: #B8D2FF75;
   }
 
 
@@ -140,4 +143,91 @@
       display:  grid;
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 20px;
+  }
+
+  #sidebar {
+    position: fixed;
+    /* padding-left: 2rem; */
+    width: 250px;
+    background: var(--primary-color);
+    min-height: 100vh;
+    z-index: 999;
+  }
+  #sidebar ul{
+    padding-left: 1.2rem;
+  }
+  #sidebar a {
+    color: var(--light);
+    display: block;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+#sidebar a:hover {
+  text-decoration: none;
+  background: var(--secondary-color);
+  padding: 0.6rem;
+  color: var(--light);
+}
+#sidebar .router-link-exact-active{
+  border-right: 6px solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+#sidebar {
+
+}
+#sidebar a span {
+  margin-left: 1rem;
+}
+  #main {
+    margin-left: 250px;
+    padding: 2rem;
+    transition: all 0.6s;
+  }
+  .view-btn {
+    background-color: var(--primary-color);
+    color: var(--light);
+    padding: 0.4rem 0.6rem;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+  }
+  .view-btn:hover{
+    background-color: transparent;
+    text-decoration: none;
+    color: var(--primary-color);
+    transition:all 0.6s;
+  }
+  .table td, .table th {
+    font-size: 0.8rem;
+  }
+  .True {
+    width: 8px;
+    height: 8px;
+    background: #027602;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+  }
+  .True {
+    width: 8px;
+    height: 8px;
+    background: #00ff00;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+  }
+  .False {
+    width: 8px;
+    height: 8px;
+    background: #eb0101;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+  }
+  .Pending {
+    width: 8px;
+    height: 8px;
+    background: #ffae00;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+  }
+  small {
+    font-size: 1.1rem !important;
   }

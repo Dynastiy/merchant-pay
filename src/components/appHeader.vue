@@ -1,12 +1,14 @@
 <template>
-    <div class="d-flex justify-content-between mb-5">
-        <div v-if="currentRouteName != 'Dashboard' " class="align-items-center d-flex" @click="goBack">
+    <div class="mb-5">
+        <h1> {{  currentRouteName}}<small class="small" v-if="currentRouteParams"> / {{ currentRouteParams }} </small></h1> 
+        <hr>
+        <!-- <div v-if="currentRouteName != 'Dashboard' " class="align-items-center d-flex" @click="goBack">
             <i class="fa fa-arrow-left fa-2x mr-3" aria-hidden="true"></i>
             <span>Back to Dashboard</span>
-        </div>
-        <div>
+        </div> -->
+        <!-- <div>
             <button @click="logout" class="btn cart-btn btn-danger">Logout</button>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -30,6 +32,9 @@ export default {
     computed:{
         currentRouteName(){
             return this.$route.name
+        },
+        currentRouteParams(){
+            return this.$route.params.id
         }
     }
 }
