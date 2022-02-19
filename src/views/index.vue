@@ -1,17 +1,17 @@
 <template>
     <div>
         <div class="container mt-5">
-            <!-- <app-drawer></app-drawer> -->
+            <app-header></app-header>
             <router-view></router-view>
         </div>
     </div>
 </template>
 
 <script>
-// import appDrawer from '../components/AppDrawer.vue';
+import appHeader from '../components/appHeader.vue';
 export default {
     components:{
-        // appDrawer
+        appHeader
     }
 }
 </script>

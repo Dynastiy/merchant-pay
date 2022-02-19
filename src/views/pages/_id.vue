@@ -67,7 +67,7 @@
         <!-- Product Description -->
         <section class="text-center">
           <div class="documents">
-            <h3>Listed Documents</h3>
+            <h3>Uploaded Documents</h3>
             <div class="listed_docs">
               <div
                 class="listed"
@@ -113,11 +113,11 @@ export default {
         console.log(error);
       }
     },
-  approve() {
+  async approve() {
     try {
       let payload = { code: "True", reference_number: this.id };
-      axios
-        .post(`${this.baseurl}admin/kyc`, payload)
+      await axios
+        .post(`${this.baseurl}api/admin/kyc`, payload)
         .then((response) => {
           console.log(response);
           this.getKycByRef();
@@ -125,14 +125,14 @@ export default {
           Swal.fire("Done!", msg, "success");
         });
     } catch (error) {
-      console.log(error.response);
+      console.log(error);
     }
   },
-  decline() {
+  async decline() {
     try {
       let payload = { code: "False", reference_number: this.id };
-      axios
-        .post(`${this.baseurl}admin/kyc`, payload)
+      await axios
+        .post(`${this.baseurl}api/admin/kyc`, payload)
         .then((response) => {
           console.log(response);
           this.getKycByRef();
@@ -140,7 +140,7 @@ export default {
           Swal.fire("Done!", msg, "error");
         });
     } catch (error) {
-      console.log(error.response);
+      console.log(error);
     }
   },
   },
