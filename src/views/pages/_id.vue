@@ -76,7 +76,7 @@
                 style="grid-gap: 10px"
               >
                 <div class="shadow-sm bg-white p-3">
-                  <a :href="baseurl + doc.file" download target="_black">
+                  <a :href="baseurl + doc.file" download target="_blank">
                     <img width="60%" :src="baseurl + doc.file" alt="" />
                     <h6 class="text-dark pt-3">{{ doc.name }}</h6>
                   </a>
@@ -107,10 +107,10 @@ export default {
     async getKycByRef() {
       try {
         const res = await helpers.getKycByRef(this.id);
-        console.log(res.kyc);
+        // console.log(res.kyc);
         this.submitted = res.kyc;
         this.documents = res.kyc.documents;
-        console.log(this.documents);
+        // console.log(this.documents);
       } catch (error) {
         console.log(error);
       }
@@ -121,7 +121,7 @@ export default {
       await axios
         .post(`${this.baseurl}api/admin/kyc`, payload)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           this.getKycByRef();
           let msg = response.data.message;
           Swal.fire("Done!", msg, "success");

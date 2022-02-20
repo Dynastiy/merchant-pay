@@ -4,12 +4,15 @@
       <!-- Table for kyc List -->
       <div class="row mt-4 user__table">
         <div class="col-lg-12">
-          <h4 class="font-weight-bold mb-4">All Submitted KYCs</h4>
+          <div class="mb-4">
+            <h4 class="font-weight-bold">All Submitted KYCs</h4>
+            <p class="small"> Showing <span> {{ pages_details.from }} - {{ pages_details.to }} </span> of <span> {{ pages_details.total }} </span></p>
+          </div>
           <div class="table-responsive">
             <table class="table table-centered table-nowrap mb-0">
               <thead class="thead-light">
                 <tr>
-                    <th>Reference No.</th>
+                  <th>Reference No.</th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Verification Status</th>
@@ -39,19 +42,27 @@
 </template>
 
 <script>
-
 import helpers from '@/helpers/index.js'
 export default {
+  props: ['page'],
+  components:{
+  },
   data(){
     return{
       kyc: [],
+      pages_details: {},
     }
   },
   methods:{
     async getKyc(){
-      let res = await helpers.getKyc();
+      const page = this.$route.query.page
+        // const res = await axios.get(`${this.baseUrl}admin/get-users`, { params: { status: page } });
+        // console.log(res.data);
+      let res = await helpers.getKyc(page);
       console.log(res.kycs);
-      this.kyc = res.kycs
+      this.pages_details = res.kycs
+      this.kyc = res.kycs.data
+
     }
   },
   async created(){

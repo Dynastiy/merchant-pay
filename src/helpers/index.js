@@ -9,9 +9,9 @@ export default {
         return response.data;
     },
     
-    async getKyc() {
+    async getKyc(page) {
         const response = await axios
-            .get(url + 'kyc/details');
+            .get(`${url}kyc/details?page=${page}`);
         return response.data;
     },
     async getKycByRef(id) {
