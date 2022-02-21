@@ -21,7 +21,17 @@ export default {
     },
     async getStaffs() {
         const response = await axios
-            .get(url + 'admin/users/list');
-        return response.data.data;
+            .get(url + 'users');
+        return response.data;
+    },
+    async addStaff(payload) {
+        const response = await axios
+            .post(url + 'user/create', payload);
+        return response.data;
+    },
+    async updatePassword(payload) {
+        const response = await axios
+            .post(url + 'user/change-password', payload);
+        return response.data;
     },
 };
