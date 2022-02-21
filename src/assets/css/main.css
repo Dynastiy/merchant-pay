@@ -336,3 +336,6 @@ body{
 .add_staff_container .view-btn {
   width: 100%;
 }
+.kyc-container button {
+  font-size: 0.8rem;
+}

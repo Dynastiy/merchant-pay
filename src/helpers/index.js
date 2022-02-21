@@ -34,4 +34,14 @@ export default {
             .post(url + 'user/change-password', payload);
         return response.data;
     },
+    async activate(payload) {
+        const response = await axios
+            .post(url + 'admin/activate-user', payload);
+        return response.data;
+    },
+    async deActivate(payload) {
+        const response = await axios
+            .post(url + 'admin/deactivate-user', payload);
+        return response.data;
+    },
 };

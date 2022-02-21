@@ -13,12 +13,20 @@
                 <tr>
                   <th>Name</th>
                   <th>Email</th>
+                  <th>Role</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="item in staffs" :key="item.id">
                   <td class="text-capitalize">{{ item.name }}</td>
                   <td>{{ item.email }}</td>
+                  <td class="text-capitalize"> {{ item.role }} </td>
+                  <td>
+                      <button class="btn btn-danger small" @click="deActivate(item)" v-if="item.status === 'active'   " >Deactivate</button>
+                      <button class="btn btn-success mr-3 small" @click="activate(item)" v-else>Activate</button>
+                      
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -82,6 +90,7 @@ export default {
       payload: {
         name: "",
         email: "",
+        status: 'active'
       },
     };
   },
@@ -121,6 +130,41 @@ export default {
         
       }
       this.loading= false;
+    },
+    async activate(item){
+        const payload = { 
+            user_id: item.id
+        }
+        try {
+            let res = await helpers.activate(payload);
+            let msg = res.message
+            Swal.fire(
+          'Nice!',
+          msg,
+          'success'
+        )
+        this.getStaffs()
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    async deActivate(item){
+        const payload = { 
+            user_id: item.id
+        }
+        try {
+            let res = await helpers.deActivate(payload);
+            // console.log(res);
+            let msg = res.message
+            Swal.fire(
+          'Nice!',
+          msg,
+          'success'
+        )
+        this.getStaffs()
+        } catch (error) {
+            console.log(error);
+        }
     },
     async getStaffs() {
       let res = await helpers.getStaffs();

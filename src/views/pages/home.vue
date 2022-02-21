@@ -20,6 +20,11 @@
                 </tr>
               </thead>
               <tbody>
+                 <div class="d-flex justify-content-center" v-if="loading">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
                 <tr v-for="item in kyc" :key="item.id">
                   <td class="text-uppercase">
                       {{ item.reference_number }}
@@ -51,6 +56,7 @@ export default {
     return{
       kyc: [],
       pages_details: {},
+      loading: false,
     }
   },
   methods:{

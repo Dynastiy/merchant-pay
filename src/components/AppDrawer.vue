@@ -15,7 +15,7 @@
                 <router-link to="/staffs" v-show="user.role === 'admin' ">
                     <li>
                         <i class="fa fa-users" aria-hidden="true"></i>
-                        <span>Staffs
+                        <span>Staff 
                         </span></li>
                 </router-link>
 
