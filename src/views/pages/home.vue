@@ -19,6 +19,11 @@
                   <th></th>
                 </tr>
               </thead>
+              <div class="d-flex justify-content-center mt-5" v-if="loading">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
               <tbody>
                 <tr v-for="item in kyc" :key="item.id">
                   <td class="text-uppercase">
@@ -51,18 +56,18 @@ export default {
     return{
       kyc: [],
       pages_details: {},
+      loading: false,
     }
   },
   methods:{
     async getKyc(){
+      this.loading = true
       const page = this.$route.query.page
-        // const res = await axios.get(`${this.baseUrl}admin/get-users`, { params: { status: page } });
-        // console.log(res.data);
       let res = await helpers.getKyc(page);
       console.log(res.kycs);
       this.pages_details = res.kycs
       this.kyc = res.kycs.data
-
+      this.loading = false
     }
   },
   async created(){

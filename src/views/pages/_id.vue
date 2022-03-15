@@ -11,6 +11,9 @@
           <p class="text-dark">
             {{ submitted.reference_number }}
           </p>
+          <p class="text-dark" v-if="submitted.is_verified ==='True' ">
+            Verified by:  <span class="small text-danger"> {{ submitted.verified_by }}</span>
+          </p>
           <!-- <div>
             <span class="product__file__size">File Size:  {{ submitted.file_size }} </span>
             <div class="cable-choose">
@@ -107,7 +110,7 @@ export default {
     async getKycByRef() {
       try {
         const res = await helpers.getKycByRef(this.id);
-        // console.log(res.kyc);
+        console.log(res.kyc);
         this.submitted = res.kyc;
         this.documents = res.kyc.documents;
         // console.log(this.documents);
