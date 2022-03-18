@@ -13,7 +13,7 @@
                 of <span> {{ pages_details.total }} </span>
               </p>
             </div>
-            <div>
+            <div v-if="admin">
               <button class="email__wrap px-3 py-1" @click="send_feedback()">
                 Send Feedback
               </button>
@@ -68,6 +68,7 @@
                 <tr v-for="item in kyc" :key="item.id">
                   <td class="text-uppercase">
                     {{ item.reference_number }}
+                    <!-- {{ admin.admin }} -->
                   </td>
                   <td class="text-capitalize">{{ item.name }}</td>
                   <td>{{ item.email }}</td>
@@ -103,6 +104,7 @@ export default {
       kyc: [],
       pages_details: {},
       loading: false,
+      admin: {},
     };
   },
   methods: {
@@ -123,9 +125,19 @@ export default {
         console.log(error);
       }
     },
+    async getAdmin() {
+      try {
+        let res = await helpers.getAdmin();
+        this.admin = res.admin;
+        console.log(this.admin);
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
   async created() {
     this.getKyc();
+    this.getAdmin();
   },
 };
 </script>

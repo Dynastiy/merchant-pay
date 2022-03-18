@@ -47,5 +47,9 @@ export default {
     async send_feedback() {
         const response = await axios.post(url + 'kyc/send-mail')
         return response.data
+    },
+    async getAdmin() {
+        const response = await axios.get(url + 'admin')
+        return response.data
     }
 };
