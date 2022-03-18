@@ -8,7 +8,7 @@ export default {
             .post(url + 'admin/login/', credentials);
         return response.data;
     },
-    
+
     async getKyc(page) {
         const response = await axios
             .get(`${url}kyc/details?page=${page}`);
@@ -44,4 +44,8 @@ export default {
             .post(url + 'admin/deactivate-user', payload);
         return response.data;
     },
+    async send_feedback() {
+        const response = await axios.post(url + 'kyc/send-mail')
+        return response.data
+    }
 };

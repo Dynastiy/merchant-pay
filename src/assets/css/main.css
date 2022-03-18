@@ -339,3 +339,89 @@ body{
 .kyc-container button {
   font-size: 0.8rem;
 }
+
+/* Mail Styling */
+.user__table {
+  position: relative;
+}
+.email__wrap {
+  border-radius: 5px;
+  background-color: #020818;
+  color: #fff;
+  border: none;
+}
+.email__wrap:hover {
+  border-radius: 7px;
+  background-color: #b8d2ff0c;
+  color: #000;
+  border: 1px solid #000;
+}
+/* .email__wrapper {
+  background-color: rgba(0, 0, 0, 0.445);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out 5s;
+}
+.slideInDown {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes slideInDown {
+  0% {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  }
+  }
+  @keyframes slideInDown {
+  0% {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  }
+  } 
+.mail__modal {
+  width: 30%;
+  border-radius: 10px;
+  background-color: #fff;
+  background-blend-mode: overlay;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+.mail__modal p {
+  font-weight: 600;
+  font-size: 20px;
+  cursor: pointer;
+}
+.mail__modal .form-control {
+  box-shadow: none;
+  font-size: 12px;
+}
+.send__request__wrap button {
+  width: 100%;
+  border: none;
+  background-color: #020818;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 12px;
+  padding: 7px 2px;
+} */
