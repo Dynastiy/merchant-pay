@@ -4,66 +4,76 @@ import Home from '../views/index.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-    children:[
-      {
+const routes = [{
         path: '/',
-        name: 'Dashboard',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/pages/index.vue'),
-        children:[
-          {
-            path: '/',
-            name: 'Dashboard',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            component: () => import(/* webpackChunkName: "about" */ '../views/pages/home.vue')
-          }
+        name: 'Home',
+        component: Home,
+        children: [{
+                path: '/',
+                name: 'Dashboard',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../views/pages/index.vue'),
+                children: [{
+                    path: '/',
+                    name: 'Dashboard',
+                    // route level code-splitting
+                    // this generates a separate chunk (about.[hash].js) for this route
+                    // which is lazy-loaded when the route is visited.
+                    component: () =>
+                        import ( /* webpackChunkName: "about" */ '../views/pages/home.vue')
+                }]
+            },
+            {
+                path: '/staffs',
+                name: 'Staffs',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../views/pages/staffs.vue')
+            },
+            {
+                path: '/withdrawal-notifications',
+                name: 'Withdrawal',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../views/pages/withdrawal_notifications.vue')
+            },
+            {
+                path: '/kyc/:id',
+                name: 'Kyc',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../views/pages/_id.vue')
+            }
         ]
-      },
-      {
-        path: '/staffs',
-        name: 'Staffs',
+    },
+    {
+        path: '/signin',
+        name: 'Signin',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/pages/staffs.vue')
-      },
-      {
-        path: '/kyc/:id',
-        name: 'Kyc',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/pages/_id.vue')
-      }
-    ]
-  },
-  {
-    path: '/signin',
-    name: 'Signin',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/auth/signin.vue')
-  },
-  
+        component: () =>
+            import ( /* webpackChunkName: "about" */ '../views/auth/signin.vue')
+    },
+
 ]
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  scrollBehavior() {
-      return window.scrollTo({ top: 0, behavior: 'smooth' });
-  },
-  routes
+    mode: "history",
+    base: process.env.BASE_URL,
+    scrollBehavior() {
+        return window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    routes
 })
 
 export default router

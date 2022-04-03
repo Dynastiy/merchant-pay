@@ -2,46 +2,60 @@
     <div>
         <div class="pagination__page">
        
-                <router-link to="/" class="mr-3 text-dark" v-if="pages.current_page === pages.last_page "> First</router-link>
+                <button class="   mr-3" @click="nextPage(page=1)" v-if="meta.current_page > 1 "> First</button>
             
-                <router-link class="text-dark" v-if="pages.current_page === pages.last_page " :to="{path:'/',query:{page:pages.current_page-1}}"> <i class="fa fa-angle-left" aria-hidden="true"></i><i class="fa fa-angle-left" aria-hidden="true"></i> </router-link>
+                <a class="mr-3" @click="nextPage(meta.current_page - 1)"  v-if="meta.current_page > 1 " > &laquo; </a>
             
-             <ul class="list-unstyled pagination mt-3">
-                <li>
-                    <router-link v-for="i in pages.last_page" :key="i" :to="{path:'/', query:{page: i }}"> {{ i }} </router-link>
+             <ul class="list-unstyled d-flex paged align-items-center m-0">
+                <li v-for="page in meta.last_page" :key="page">
+                    <a class="mr-3" @click.prevent="nextPage(page)" :class="{current: meta.current_page === page }"  v-if="Math.abs(page - meta.current_page) < 5 ||  page === 10 || page == meta.last_page - 1 || page == 0"> {{ page }} </a>
                 </li>
              </ul>
-                <router-link class="text-dark" :to="{path:'/',query:{page: pages.current_page+1}}" v-if="pages.current_page !== pages.last_page "> <i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-angle-right" aria-hidden="true"></i> </router-link>
+
+             <!-- <div class=" ml-3">
+               <span> Page {{meta.current_page}} </span> of <span> {{ meta.last_page }} </span>
+             </div> -->
+
             
-                <router-link class="ml-3 text-dark" :to="{path:'/',query:{page:pages.last_page}}"  v-if="pages.current_page !== pages.last_page "> Last </router-link>
+                <a class="" @click="nextPage(meta.current_page+1)" v-if="meta.current_page !== meta.last_page "> &raquo; </a>
+            
+                <button class="ml-3 " @click="nextPage(meta.last_page)"  v-if="meta.current_page !== meta.last_page "> Last </button>
+
         
     </div>
     </div>
 </template>
 
 <script>
-import helpers from '@/helpers/index.js'
+// import helpers from '@/helpers/index.js'
 export default {
+  props:[
+'meta'
+  ],
     data(){
         return{
-            pages: {},
-            page: this.$route.query.page,
+            // pages: {},
+            // page: this.$route.query.page,
         }
     },
     methods:{
-    async getPages(){
-      
-        // const res = await axios.get(`${this.baseUrl}admin/get-users`, { params: { status: page } });
-        // console.log(res.data);
-      let res = await helpers.getKyc(this.page);
-      console.log(res.kycs);
-      this.pages = res.kycs
-
-    }
+     nextPage(page) {
+      this.$emit('next', page)
+    },
   },
   async created(){
-    this.getPages();
+    // this.getPages();
   }
     
 }
 </script>
+
+<style>
+ .paged a.first::after {
+  content:'...'
+}
+
+.paged a.last::before {
+  content:'...'
+}
+</style>

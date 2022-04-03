@@ -19,35 +19,6 @@
               </button>
             </div>
           </div>
-          <!-- <div class="email__wrapper" v-show="display_mail_box">
-            <div class="mail__modal slideInDown">
-              <div class="text-right">
-                <p @click="display_mail_box = !display_mail_box">x</p>
-              </div>
-              <div class="form-group mt-2">
-                <input type="text" class="form-control" placeholder="Subject" />
-              </div>
-              <div class="form-group mt-2">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Enter Email Address"
-                />
-              </div>
-              <div class="form-group">
-                <textarea
-                  class="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="3"
-                  required
-                >
-                </textarea>
-              </div>
-              <div class="send__request__wrap">
-                <button>Send Mail</button>
-              </div>
-            </div>
-          </div> -->
           <div class="table-responsive">
             <table class="table table-centered table-nowrap mb-0">
               <thead class="thead-light">
@@ -88,6 +59,7 @@
             </table>
           </div>
           <!-- end table-responsive -->
+          <pagination @next="getKyc" :meta="meta"/>
         </div>
       </div>
     </div>
@@ -95,26 +67,31 @@
 </template>
 
 <script>
+import pagination from '@/components/pagination'
 import helpers from "@/helpers/index.js";
 export default {
-  props: ["page"],
-  components: {},
+   components:{
+        pagination 
+    },
   data() {
     return {
       kyc: [],
       pages_details: {},
       loading: false,
       admin: {},
+      meta: {},
+      page: '',
     };
   },
   methods: {
-    async getKyc() {
+    async getKyc(page = 1) {
       this.loading = true;
-      const page = this.$route.query.page;
+      // const page = this.$route.query.page;
       let res = await helpers.getKyc(page);
       console.log(res.kycs);
       this.pages_details = res.kycs;
       this.kyc = res.kycs.data;
+      this.meta = res.kycs
       this.loading = false;
     },
     async send_feedback() {
