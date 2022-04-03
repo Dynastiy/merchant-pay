@@ -5,14 +5,15 @@
       <div class="left-column">
         <div class="product-description">
           <h1 class="text-capitalize fon-weight-bold">{{ submitted.name }}</h1>
-          <p class="text-dark font-weight-bold">
+          <!-- <p class="text-dark font-weight-bold">
             {{ submitted.email }}
-          </p>
+          </p> -->
           <p class="text-dark">
             {{ submitted.reference_number }}
           </p>
-          <p class="text-dark" v-if="submitted.is_verified ==='True' ">
-            Verified by:  <span class="small text-danger"> {{ submitted.verified_by }}</span>
+          <p class="text-dark" v-if="submitted.is_verified === 'True'">
+            Verified by:
+            <span class="small text-danger"> {{ submitted.verified_by }}</span>
           </p>
           <!-- <div>
             <span class="product__file__size">File Size:  {{ submitted.file_size }} </span>
@@ -118,36 +119,36 @@ export default {
         console.log(error);
       }
     },
-  async approve() {
-    try {
-      let payload = { code: "True", reference_number: this.id };
-      await axios
-        .post(`${this.baseurl}api/admin/kyc`, payload)
-        .then((response) => {
-          // console.log(response);
-          this.getKycByRef();
-          let msg = response.data.message;
-          Swal.fire("Done!", msg, "success");
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  },
-  async decline() {
-    try {
-      let payload = { code: "False", reference_number: this.id };
-      await axios
-        .post(`${this.baseurl}api/admin/kyc`, payload)
-        .then((response) => {
-          console.log(response);
-          this.getKycByRef();
-          let msg = response.data.message;
-          Swal.fire("Done!", msg, "error");
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  },
+    async approve() {
+      try {
+        let payload = { code: "True", reference_number: this.id };
+        await axios
+          .post(`${this.baseurl}api/admin/kyc`, payload)
+          .then((response) => {
+            // console.log(response);
+            this.getKycByRef();
+            let msg = response.data.message;
+            Swal.fire("Done!", msg, "success");
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async decline() {
+      try {
+        let payload = { code: "False", reference_number: this.id };
+        await axios
+          .post(`${this.baseurl}api/admin/kyc`, payload)
+          .then((response) => {
+            console.log(response);
+            this.getKycByRef();
+            let msg = response.data.message;
+            Swal.fire("Done!", msg, "error");
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
   async created() {
     this.getKycByRef();
