@@ -54,7 +54,7 @@
                 <tr>
                   <th>Reference No.</th>
                   <th>Name</th>
-                  <th>Email</th>
+                  <!-- <th>Email</th> -->
                   <th>Verification Status</th>
                   <th></th>
                 </tr>
@@ -71,7 +71,7 @@
                     <!-- {{ admin.admin }} -->
                   </td>
                   <td class="text-capitalize">{{ item.name }}</td>
-                  <td>{{ item.email }}</td>
+                  <!-- <td>{{ item.email }}</td> -->
                   <td class="d-flex align-items-center">
                     <div :class="[item.is_verified]"></div>
                     <span>{{ item.is_verified }}</span>
