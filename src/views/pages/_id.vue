@@ -5,9 +5,9 @@
       <div class="left-column">
         <div class="product-description">
           <h1 class="text-capitalize fon-weight-bold">{{ submitted.name }}</h1>
-          <!-- <p class="text-dark font-weight-bold">
+          <p class="text-dark font-weight-bold">
             {{ submitted.email }}
-          </p> -->
+          </p>
           <p class="text-dark">
             {{ submitted.reference_number }}
           </p>

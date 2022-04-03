@@ -25,7 +25,7 @@
                 <tr>
                   <th>Reference No.</th>
                   <th>Name</th>
-                  <!-- <th>Email</th> -->
+                  <th>Email</th>
                   <th>Verification Status</th>
                   <th></th>
                 </tr>
@@ -59,7 +59,7 @@
             </table>
           </div>
           <!-- end table-responsive -->
-          <pagination @next="getKyc" :meta="meta"/>
+          <pagination @next="getKyc" :meta="meta" />
         </div>
       </div>
     </div>
@@ -67,12 +67,12 @@
 </template>
 
 <script>
-import pagination from '@/components/pagination'
+import pagination from "@/components/pagination";
 import helpers from "@/helpers/index.js";
 export default {
-   components:{
-        pagination 
-    },
+  components: {
+    pagination,
+  },
   data() {
     return {
       kyc: [],
@@ -80,7 +80,7 @@ export default {
       loading: false,
       admin: {},
       meta: {},
-      page: '',
+      page: "",
     };
   },
   methods: {
@@ -91,7 +91,7 @@ export default {
       console.log(res.kycs);
       this.pages_details = res.kycs;
       this.kyc = res.kycs.data;
-      this.meta = res.kycs
+      this.meta = res.kycs;
       this.loading = false;
     },
     async send_feedback() {
